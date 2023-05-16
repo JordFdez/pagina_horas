@@ -31,6 +31,7 @@ else {
             include("../include/tabla.php");
             include("../include/tabla2.php");
             include("../include/menu.php");
+            include("../include/eliminar.php");
         
         echo '</head>
         
@@ -49,7 +50,7 @@ else {
                     <span class="item_span"><a class="item_a" href="./resto_horas.php"> Ir a resto horas</a></span>
                 </div>
                 <div class="items ">
-                    <span class="item_span"><a class="item_a" href="../works/obras.php"> Ver Obras</a></span>
+                    <span class="item_span"><a class="item_a" href="../works/obras.php"> <img src="../img/const1.svg" height="25px" width="30px"> Ver Obras</a></span>
                 </div>
                 <div class="items ">
                     <span class="item_span"><a class="item_a" href="add_horas_propias.php"> Añadir Horas </a></span>
@@ -91,9 +92,9 @@ else {
                                     if ($resultado['comment'] == ""){
                 print "<tr><td>" . $resultado['date'] . "</td><td>" . $resultado['name'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td>" . $resultado['hour'] . "</td><td></td>
                                     <td>" . $resultado['register'] . "</td>
-                                    <td><form action='horas_propias_conf.php' method='GET'>
+                                    <td><form action='horas_propias_conf.php' method='GET' >
                                     <input type='hidden' name='id_hours' value='" . $resultado['id'] . "'>
-                                    <button class='no_boton2' name='delete' onclick='return confirmDelete()' title='Borrar' >
+                                    <button class='no_boton2' name='delete' title='Borrar' >
                             <i class='fa fa-trash-o' style='font-size:22px;color:red'></i>
                             </button>
                             <button name='edit' class='no_boton2' title='Editar'>
@@ -105,9 +106,9 @@ else {
                                     <path d='M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z'/>
                                     </svg></button><input type='hidden' name='hours_id' value='" . $resultado['id'] . "' ></form></td>
                                     <td>" . $resultado['register'] . "</td>
-                                    <td><form action='horas_propias_conf.php' method='GET'>
+                                    <td><form action='horas_propias_conf.php' method='GET' >
                                     <input type='hidden' name='id_hours' value='" . $resultado['id'] . "'>
-                                    <button class='no_boton2' name='delete' onclick='return confirmDelete()' title='Borrar' >
+                                    <button class='no_boton2' name='delete'  title='Borrar' >
                             <i class='fa fa-trash-o' style='font-size:22px;color:red'></i>
                             </button>
                             <button name='edit' class='no_boton2' title='Editar'>

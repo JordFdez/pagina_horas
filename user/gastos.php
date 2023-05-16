@@ -27,7 +27,9 @@ maximum-scale=1, user-scalable=0" name="viewport" />
 
     <?php include("../include/tabla.php");
     include("../include/tabla2.php");
-    include("../include/menu.php"); ?>
+    include("../include/menu.php"); 
+    include("../include/eliminar.php");
+    ?>
 
 </head>
 
@@ -84,8 +86,9 @@ maximum-scale=1, user-scalable=0" name="viewport" />
                     <?php
                     for ($i = 0; $i < $num_filas; $i++) {
                         $resultado = mysqli_fetch_array($consulta);
-                        print "<tr><td>" . $resultado['estado'] . " </td><td>" . $resultado['user_name'] . " " . $resultado['last_name'] . $resultado['email'] . "</td><td>" . $resultado['work_name'] . "<br>" . $resultado['code'] . "</td><td>" . $resultado['fecha'] . "</td><td>" . $resultado['tipo_gasto'] . "</td><td>" . $resultado['importe'] . "</td><td>" . $resultado['comentario'] . "</td><td>" . $resultado['who_approve'] . "</td><td><form action='gastos_conf.php' method='GET'><input name='id_gastos' type='hidden' value=" . $resultado['id'] . ">
-                        <button class='no_boton2' name='delete' onclick='return confirmDelete()' title='Borrar' >
+                        print "<tr><td>" . $resultado['estado'] . " </td><td>" . $resultado['user_name'] . " " . $resultado['last_name'] . $resultado['email'] . "</td><td>" . $resultado['work_name'] . "<br>" . $resultado['code'] . "</td><td>" . $resultado['fecha'] . "</td><td>" . $resultado['tipo_gasto'] . "</td><td>" . $resultado['importe'] . "</td><td>" . $resultado['comentario'] . "</td><td>" . $resultado['who_approve'] . "</td>
+                        <td><form action='gastos_conf.php' method='GET' onsubmit='return confirmarEliminacion()'><input name='id_gastos' type='hidden' value=" . $resultado['id'] . ">
+                        <button class='no_boton2' name='delete' title='Borrar' >
                             <i class='fa fa-trash-o' style='font-size:22px;color:red'></i>
                             </button>
                            

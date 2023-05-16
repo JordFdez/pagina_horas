@@ -61,12 +61,21 @@ else {
     }
 
     else if (isset($_REQUEST['delete'])){
+        include("../include/eliminar.php");
         $query3 = "delete from hours where id=$id";
         $consulta3 = mysqli_query($conn, $query3) or die("Fallo en la consulta");
-        echo "<script language='javascript'>
-                alert('¡¡ Fila de hora eliminada !!');
-                window.location.replace('./horas_propias.php');
+        if ($consulta3){
+            echo "<script language='javascript'>
+                    alert('¡¡ Fila de hora eliminada !!');
+                    window.location.replace('./horas_propias.php');
                 </script>";
+        }
+        else{
+            echo "<script language='javascript'>
+                    alert('¡¡ Erro al eliminar !!');
+                    window.location.replace('./horas_propias.php');
+                </script>";
+        }
 
 
 
