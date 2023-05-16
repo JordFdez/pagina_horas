@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+}
+
+.nav-bar{
+    color: white;
+    padding: 3%;
+}
+.nav-bar_der{
+    float: right;
+}
+.medio {
+    width: 100%;
+}
+.medio_ajuste {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    
+}
+
+.items {
+    width:auto;
+    float: left;
+    background-color: rgb(233, 232, 232);
+    margin-right: 6%;
+    border-radius: 6px;
+    padding: 1%;
+    margin-bottom: 1%;
+}
+
+.item_a {
+    text-decoration: none;
+    color: black;
+
+}
+
+.items:hover{
+    background-color: rgb(40, 232, 40);
+}
+
+.APROBADA {
+    color: green;
+}
+.ACTIVADA {
+    color: green;
+}
+
+.NO{
+    color: red;
+}
