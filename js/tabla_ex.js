@@ -59,8 +59,7 @@ $(document).ready(function () {
                 extend: 'excel', 
                 filename: fecha(),
                 excelStyles:{
-                    template:'header_orange',
-                    
+                    template:'header_orange'  
                 } 
             }, 
 

@@ -11,7 +11,7 @@ if(isset($_REQUEST['iniciar'])){
         die("Conexion fallida:" . mysqli_connect_error());
     }
     else{
-        $query = "select * from users where email='$email'";
+        $query = "select * from users where email='$email'"; // and password2=$password
         $consulta = mysqli_query($conn, $query) or die("Fallo en la consulta");
         $num_filas = mysqli_num_rows($consulta);
         $resultado = mysqli_fetch_array($consulta);
@@ -27,7 +27,7 @@ if(isset($_REQUEST['iniciar'])){
         
             if ($email == $_SESSION['email'] && $_SESSION['type'] == 'ACTIVADA' ){
                 //cuando ya esten todas actualizadas.
-                //if ($email == $_SESSION['email'] && $password == $_SESSION['pass']){
+                //if ($email == $_SESSION['email'] && $password == $_SESSION['pass'] && $_SESSION['type'] == 'ACTIVADA'){
                 $id = $_SESSION['id'];
                 $query1 = "update users set password2=MD5('$password') where id=$id;";
                 $consulta2 = mysqli_query($conn, $query1) or die ("Fallo en la consulta");
