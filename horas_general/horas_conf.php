@@ -76,7 +76,7 @@ else {
 
     else if (isset($_REQUEST['confirm'])){
 
-        $query4 = "update hours set status='APROBADA', who_approve=(select concat(name,' ', last_name) from users where id=$id_user ) where id=$id; ";
+        $query4 = "update hours set status='APROBADA', who_approve=(select email from users where id=$id_user ) where id=$id; ";
         $conuslta4 = mysqli_query($conn, $query4) or die ("fallo en la consulta");
         echo "<script language='javascript'>
                 alert('¡¡ Hora aprobada !!');
