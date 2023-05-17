@@ -56,7 +56,10 @@ maximum-scale=1, user-scalable=0" name="viewport" />
                     <tr>
                         <th>Estado</th>
                         <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Email</th>
                         <th>Obra</th>
+                        <th>Codigo Obra</th>
                         <th>Fecha</th>
                         <th>Tipo</th>
                         <th>Importe</th>
@@ -76,6 +79,9 @@ maximum-scale=1, user-scalable=0" name="viewport" />
                         <th>Filter..</th>
                         <th>Filter..</th>
                         <th>Filter..</th>
+                        <th>Filter..</th>
+                        <th>Filter..</th>
+                        <th>Filter..</th>
 
                     </tr>
                 </tfoot>
@@ -83,7 +89,7 @@ maximum-scale=1, user-scalable=0" name="viewport" />
                     <?php
                     for ($i = 0; $i < $num_filas; $i++) {
                         $resultado = mysqli_fetch_array($consulta);
-                        print "<tr><td class='" . $resultado['estado'] . "'>" . $resultado['estado'] . " </td><td>" . $resultado['user_name'] . " " . $resultado['last_name'] . $resultado['email'] . "</td><td>" . $resultado['work_name'] . "<br>" . $resultado['code'] . "</td><td>" . $resultado['fecha'] . "</td><td>" . $resultado['tipo_gasto'] . "</td><td>" . $resultado['importe'] . "</td><td>" . $resultado['comentario'] . "</td><td>" . $resultado['who_approve'] . "</td><td><form action='gastos_conf.php' method='GET'><input name='id_gastos' type='hidden' value=" . $resultado['id'] . ">
+                        print "<tr><td class='" . $resultado['estado'] . "'>" . $resultado['estado'] . " </td><td>" . $resultado['user_name'] . "</td><td> " . $resultado['last_name'] . "</td><td> ". $resultado['email'] . "</td><td>" . $resultado['work_name'] . "</td><td>" . $resultado['code'] . "</td><td>" . $resultado['fecha'] . "</td><td>" . $resultado['tipo_gasto'] . "</td><td>" . $resultado['importe'] . "</td><td>" . $resultado['comentario'] . "</td><td>" . $resultado['who_approve'] . "</td><td><form action='gastos_conf.php' method='GET'><input name='id_gastos' type='hidden' value=" . $resultado['id'] . ">
                         <button class='no_boton2' name='delete' onclick='return confirmDelete()' title='Borrar' >
                             <i class='fa fa-trash-o' style='font-size:22px;color:red'></i>
                             </button>
