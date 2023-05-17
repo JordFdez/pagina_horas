@@ -2,7 +2,7 @@
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="../user/horas_propias.php"><img src="../img/mis_horas.svg" height="30px" width="35px">Mis Horas</a>
     <a href="../user/gastos.php"><img src="../img/euro.png" height="30px" width="35px">Gastos</a>
-    <a></a><a></a><a></a><a></a><a></a><a></a><br><br><br>
+    <a></a><a></a><a></a><a></a><a></a><a></a><br><br><br><br><br>
     <a></a><a></a><a></a><a></a><a></a><a></a><a></a><a>
         <a><i class="fa fa-user" style="font-size:24px;color:#818181"></i><?php echo $_SESSION['name']; ?></a>
         <a href="../logout.php"><img src="../img/salir1.png" height="30px" width="30px">Cerrar Sesión</a>

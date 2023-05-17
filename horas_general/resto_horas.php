@@ -6,7 +6,7 @@ include("../include/bbddconexion.php");
 if (!$conn) {
     die("Conexion fallida:" . mysqli_connect_error());
 } else {
-    $query = "select exception_hours.status, users.name as 'name_user', exception_works.code, exception_works.name, exception_hours.date, exception_hours.hour, exception_hours.id, exception_hours.who_approve from exception_hours, users, exception_works where users.id=exception_hours.user_id and exception_hours.exception_work_id=exception_works.id order by exception_hours.id desc;";
+    $query = "select exception_hours.status, users.name as 'name_user', users.last_name, users.email, exception_works.code, exception_works.name, exception_hours.date, exception_hours.hour, exception_hours.id, exception_hours.who_approve from exception_hours, users, exception_works where users.id=exception_hours.user_id and exception_hours.exception_work_id=exception_works.id order by exception_hours.id desc;";
     $consulta = mysqli_query($conn, $query) or die("Fallo en la consulta");
     $num_filas = mysqli_num_rows($consulta);
 
@@ -63,8 +63,11 @@ content="width=device-width" />
                     <thead>
                         <tr>
                             <th>Estado</th>
-                            <th>Usuario</th>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>Email</th>
                             <th>Obra</th>
+                            <th>Codigo obra</th>
                             <th>Fecha Inicio</th>
                             <th>Horas</th>
                             <th>Aprobado por:</th>
@@ -80,12 +83,15 @@ content="width=device-width" />
                     <th>Filter..</th>
                     <th>Filter..</th>
                     <th>Filter..</th>
+                    <th>Filter..</th>
+                    <th>Filter..</th>
+                    <th>Filter..</th>
                 </tr>
             </tfoot>
                     <tbody>';
         for ($i = 0; $i < $num_filas; $i++) {
             $resultado = mysqli_fetch_array($consulta);
-            print "<tr><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td> " . $resultado['name_user'] . "</td><td> " . $resultado['name'] . "<br>" . $resultado['code'] . "</td><td>" . $resultado['date'] . "</td><td>" . $resultado['hour'] . "</td><input type='hidden' name='hours_id' value='" . $resultado['id'] . "' ></td>
+            print "<tr><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td> " . $resultado['name_user'] . "</td><td> " . $resultado['last_name'] . "</td><td> " . $resultado['email'] . "</td><td> " . $resultado['name'] . "</td><td>" . $resultado['code'] . "</td><td>" . $resultado['date'] . "</td><td>" . $resultado['hour'] . "</td><input type='hidden' name='hours_id' value='" . $resultado['id'] . "' ></td>
                             <td>" . $resultado['who_approve'] . "</td>
                             <td><form action='exception_horas_conf.php' method='GET'>
                             <button class='no_boton2' name='delete' onclick='return confirmDelete()' >

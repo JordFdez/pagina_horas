@@ -54,7 +54,21 @@ $(document).ready(function () {
             })
         },
             
-        "buttons": [{extend: 'excel', filename: fecha()}, {extend: 'pdf', filename: fecha() }, 'print']
+        "buttons": [
+            {
+                extend: 'excel', 
+                filename: fecha(),
+                excelStyles:{
+                    template:'header_orange',
+                    
+                } 
+            }, 
+
+            {
+                extend: 'pdf', filename: fecha()
+            },
+            
+            'print']
     });
 }
 );
