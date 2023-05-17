@@ -2,17 +2,17 @@
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="../mis_horas/horas_propias.php"><img src="../img/mis_horas.svg" height="30px" width="35px">Mis Horas</a>
-  <a href="../users/usuario.php"><img src="../img/users1.svg" height="30px" width="35px">Usuarios</a>
-  <a href="../roles/roles.php"> <img src="../img/rol.svg" height="30px" width="35px">Roles</a>
-  <a href="../horas_general/horas_todos.php"><img src="../img/reloj.svg" height="30px" width="35px">Horas</a>
-  <a href="../works/obras.php"><img src="../img/const1.svg" height="30px" width="35px">Obras</a>
-  <a href="../schedules/horarios.php"><img src="../img/horarios.svg" height="30px" width="35px">Horarios</a>
-  <a href="../gastos/gastos.php"><img src="../img/euro.png" height="30px" width="35px">Gastos</a>
+  <a href="../mis_horas/horas_propias.php"><img src="../img/mis_horas.svg" height="30px" width="35px"> Mis Horas</a>
+  <a href="../users/usuario.php"><img src="../img/users1.svg" height="30px" width="35px"> Usuarios</a>
+  <a href="../roles/roles.php"> <img src="../img/rol.svg" height="30px" width="35px"> Roles</a>
+  <a href="../horas_general/horas_todos.php"><img src="../img/reloj.svg" height="30px" width="35px"> Horas</a>
+  <a href="../works/obras.php"><img src="../img/const1.svg" height="30px" width="35px"> Obras</a>
+  <a href="../schedules/horarios.php"><img src="../img/horarios.svg" height="30px" width="35px"> Horarios</a>
+  <a href="../gastos/gastos.php"><img src="../img/euro.png" height="30px" width="35px"> Gastos</a>
   <a></a><a></a><a></a><a></a><a></a><a></a>
   <a></a><a></a><a></a><a>
-  <a><i class="fa fa-user" style="font-size:24px;color:#818181"></i><?php echo $_SESSION['name']; ?></a>
-  <a href="../logout.php"><img src="../img/salir1.png" height="30px" width="30px">Cerrar Sesión</a>
+  <a><i class="fa fa-user" style="font-size:24px;color:#818181"></i> <?php echo $_SESSION['name']; ?></a>
+  <a href="../logout.php"><img src="../img/salir1.png" height="30px" width="30px"> Cerrar Sesión</a>
 </div>
 
 <div class="nav_der">
