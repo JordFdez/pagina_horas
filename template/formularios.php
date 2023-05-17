@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width" />
 
     <title>BaumControl</title>
+    <link rel="shortcut icon" href="../img/favicon.png">
+
     <link rel="stylesheet" href="../css/nav-bar.css">
     <link rel="stylesheet" href="../css/formularios.css">
 
@@ -17,7 +19,7 @@
         <div class="nav-bar">
             <div class="medio">
                 <nav class="medio_ajuste">
-                    
+
                 </nav>
             </div><br>
         </div>

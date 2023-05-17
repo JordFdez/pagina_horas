@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>BaumControl</title>
+    <link rel="shortcut icon" href="../img/favicon.png">
+
     <link rel="stylesheet" type="text/css" href="../css/user_add.css">
 </head>
 
@@ -14,8 +16,8 @@
             <hr>
             Nombre de la obra: <br><input type="text" name="nombre_obra"><br>
             codigo de la obra: <br><input type="text" name="cod_obra"><br>
-            horas:  <br><input type="text" name="horas"><br>
-            Hora Extra:<input type="checkbox" name="hora_extra" >
+            horas: <br><input type="text" name="horas"><br>
+            Hora Extra:<input type="checkbox" name="hora_extra">
             Fecha: <input type="date" name="fecha">
             <br>
 
