@@ -16,21 +16,26 @@ if (!$conn) {
 } 
 
 else {
-    $query = "update hours set work_id=(select id from works where name like '%$name_obra%'), date='$fecha', hour='$horas' where id=$id_hours ;";
-    $consulta = mysqli_query($conn, $query) or die("Fallo en la consulta");
+    if (isset($_REQUEST['act'])) {
+        $query = "update hours set work_id=(select id from works where name like '%$name_obra%'), date='$fecha', hour='$horas' where id=$id_hours ;";
+        $consulta = mysqli_query($conn, $query) or die("Fallo en la consulta");
 
-        if($consulta){
+            if($consulta){
+                echo "<script language='javascript'>
+                    alert('¡¡ Hora actualizada !!');
+                    window.location.replace('./horas_todos.php');
+                    </script>";
+            }
+
+        else{
             echo "<script language='javascript'>
-                alert('¡¡ Hora actualizada !!');
-                window.location.replace('./horas_todos.php');
-                </script>";
+                    alert('¡¡ Error !!');
+                    window.location.replace('./horas_todos.php');
+                    </script>";
         }
-
-    else{
-        echo "<script language='javascript'>
-                alert('¡¡ Error !!');
-                window.location.replace('./horas_todos.php');
-                </script>";
+    } 
+    else if (isset($_REQUEST['close'])) {
+        header('Location:./horas_todos.php');
     }
 }
 

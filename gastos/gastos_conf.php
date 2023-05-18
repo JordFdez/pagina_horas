@@ -50,7 +50,8 @@ if(isset($_REQUEST['edit'])){
 
             <br><hr><br>
 
-            <input type="submit" name="save" class="boton" value="Actualizar">
+            <input type="submit" name="act" class="boton" value="Actualizar">
+            <input type="submit" class="boton" name="close" value="Cerrar">
         </form>
     </div>
 

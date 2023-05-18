@@ -44,18 +44,27 @@ echo '</head>
     <!--include menu -->
     '; 
     include("../template/menu.php"); 
-    echo ' <br><br><br>
+    echo ' <br><br>
     <div class="medio">
             <nav class="medio_ajuste">
-                <div class="items">
-                    <span class="item_span"><a class="item_a" href="./resto_horas.php"><i class="fa fa-hand-o-right" style="font-size:18px"></i> Ir a resto horas</a></span>
-                </div>
-                <div class="items ">
-                    <span class="item_span"><a class="item_a" href="../works/obras.php"><img src="../img/const1.svg" height="25px" width="30px"> Ver Obras</a></span>
-                </div>
-                <div class="items ">
-                    <span class="item_span"><a class="item_a" href="#"> Mis Obras </a></span>
-                </div>
+
+                <a class="item_a" href="./resto_horas.php">
+                    <div class="items">
+                        <span class="item_span"><i class="fa fa-hand-o-right" style="font-size:18px"></i> Ir a resto horas </span>
+                    </div>
+                </a>
+
+                <a class="item_a" href="../works/obras.php">
+                    <div class="items ">
+                        <span class="item_span"><img src="../img/const1.svg" height="25px" width="30px"> Ver Obras </span>
+                    </div>
+                </a>
+
+                <a class="item_a" href="../works/mis_obras.php">
+                    <div class="items ">
+                        <span class="item_span"> Mis Obras </span>
+                    </div>
+                </a>
             </nav>
     </div><br>
 </div>

@@ -36,12 +36,15 @@ maximum-scale=1, user-scalable=0" name="viewport" />
 
             <!--include menu -->
             <?php include("../template/menu.php"); ?>
-            <br><br><br>
+            <br><br>
             <div class="medio">
                 <nav class="medio_ajuste">
-                    <div class="items">
-                        <span class="item_span"><a class="item_a" href="./add_user.php"> Añadir Usuario</a></span>
-                    </div>
+                    <a class="item_a" href="./add_user.php">
+                        <div class="items">
+                            <span class="item_span"> Añadir Usuario
+                            </span>
+                        </div>
+                    </a>
 
                 </nav>
             </div><br><br>

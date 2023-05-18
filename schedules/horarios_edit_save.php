@@ -15,13 +15,18 @@ if (!$conn) {
     die("Conexion fallida:" . mysqli_connect_error());
 } 
 else {
-    $query = "update schedules set name='$name', L=$lunes, M=$martes, X=$miercoles, J=$jueves, V=$viernes, total=($lunes+$martes+$miercoles+$jueves+$viernes) where id=$id_schedules; ";
-    $consulta = mysqli_query($conn, $query) or die("Fallo en la consulta");
+    if (isset($_REQUEST['act'])) {
+        $query = "update schedules set name='$name', L=$lunes, M=$martes, X=$miercoles, J=$jueves, V=$viernes, total=($lunes+$martes+$miercoles+$jueves+$viernes) where id=$id_schedules; ";
+        $consulta = mysqli_query($conn, $query) or die("Fallo en la consulta");
 
-    echo "<script language='javascript'>
-            alert('¡¡ Horario Actualizado !!');
-            window.location.replace('./horarios.php');
-        </script>";
+        echo "<script language='javascript'>
+                alert('¡¡ Horario Actualizado !!');
+                window.location.replace('./horarios.php');
+            </script>";
+    } 
+    else if (isset($_REQUEST['close'])) {
+        header('Location:./horarios.php');
+    }
 }
 
 ?>

@@ -42,12 +42,14 @@ content="width=device-width" />
 <!--include menu -->
 ';
         include("../template/menu_user.php");
-        echo ' <br><br><br>
+        echo ' <br><br>
         <div class="medio">
             <nav class="medio_ajuste">
-                <div class="items">
-                    <span class="item_span"><a class="item_a" href="./obras.php"> Ir a obras</a></span>
-                </div>
+                <a class="item_a" href="./obras.php">
+                    <div class="items">
+                        <span class="item_span"> Ir a obras </span>
+                    </div>
+                </a>
                 
             </nav>
         </div><br>

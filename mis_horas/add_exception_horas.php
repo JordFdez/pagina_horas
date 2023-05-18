@@ -43,6 +43,7 @@ else {
             <br><hr><br>
 
             <input type="submit" name="add" class="boton" value="Añadir">
+            <input type="submit" class="boton" name="close" value="Cerrar">
         </form>
     </div>
 

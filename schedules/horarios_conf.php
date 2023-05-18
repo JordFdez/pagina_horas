@@ -51,11 +51,12 @@ else if (isset($_REQUEST['edit'])) {
             Jueves: <input type="number" class="horario" name="J" value="' . $resultado['J'] . '"><br>
             Viernes: <input type="number" class="horario" name="V" value="' . $resultado['V'] . '"><br>
 
-            <input type="hidden" name="id_schedules" value="'.$resultado['id'].'">
+            <input type="hidden" name="id_schedules" value="'.$resultado['id']. '">
 
             <hr><br>
 
             <input type="submit" class="boton" name="act" value="Actualizar">
+            <input type="submit" class="boton" name="close" value="Cerrar">
         </form>
     </div>
     </div>

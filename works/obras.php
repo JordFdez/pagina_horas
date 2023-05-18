@@ -25,6 +25,7 @@ name="viewport" />
 <meta name="viewport" 
 content="width=device-width" />
 <title>BaumControl</title>
+<link rel="shortcut icon" href="../img/favicon.png" >
 <link rel="stylesheet" href="../css/nav-bar.css">';
 
 include("../include/tabla.php");
@@ -41,15 +42,26 @@ echo '</head>
 <!--include menu -->
 '; 
 include("../template/menu.php"); 
-echo ' <br><br><br>
+echo ' <br><br>
 <div class="medio">
             <nav class="medio_ajuste">
+                <a class="item_a" href="../exception_works/exception_works.php">
                 <div class="items">
-                    <span class="item_span"><a class="item_a" href="../exception_works/exception_works.php"> Ir a resto de obras</a></span>
+                    <span class="item_span"> Ir a resto de obras </span>
                 </div>
+                </a>
+
+                <a class="item_a" href="./works_add.php">
                  <div class="items">
-                    <span class="item_span"><a class="item_a" href="./works_add.php"> Añadir Obra</a></span>
+                    <span class="item_span"> Añadir Obra </span>
                 </div>
+                </a>
+
+                <a class="item_a" href="./mis_obras.php">
+                <div class="items">
+                    <span class="item_span"> Mis Obras </span>
+                </div>
+                </a>
                 
             </nav>
         </div><br><br>

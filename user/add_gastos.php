@@ -45,6 +45,7 @@ if (!$conn) {
             <br><hr><br>
 
             <input type="submit" class="boton" name="add" value="Añadir">
+            <input type="submit" class="boton" name="close" value="Cerrar">
         </form>
     </div>
     </div>

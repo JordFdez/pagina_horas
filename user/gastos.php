@@ -45,9 +45,11 @@ maximum-scale=1, user-scalable=0" name="viewport" />
             <br><br>
             <div class="medio">
                 <nav class="medio_ajuste">
-                    <div class="items">
-                        <span class="item_span"><a class="item_a" href="./add_gastos.php"> Añadir Gastos</a></span>
-                    </div>
+                    <a class="item_a" href="./add_gastos.php">
+                        <div class="items">
+                            <span class="item_span"> Añadir Gastos </span>
+                        </div>
+                    </a>
 
                 </nav>
             </div><br>

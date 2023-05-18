@@ -15,30 +15,35 @@ if (!$conn) {
     die("Conexion fallida:" . mysqli_connect_error());
 } 
 else {
-    if ($nombre == "" | $gasto == "" | $importe == "" | $fecha == ""){
-        echo "<script language='javascript'>
-        alert('¡¡ Faltan datos por rellenar !!');
-        window.location.replace('./add_gastos.php');
-        </script>"; 
-    }
-    else {
-        $query = "insert into gastos (id, estado, nombre, work_id, tipo_gasto, importe, fecha, comentario, user_id) values (NULL, 'NO APROBADA', '$nombre' , (select id from works where name='$nombre'), '$gasto', '$importe', '$fecha', '$comentario', (select id from users where id=$id));";
-        $consulta = mysqli_query($conn, $query) or die("Fallo en la consulta");
-        
-
-        if ($consulta){
-
+    if (isset($_REQUEST['add'])) {
+        if ($nombre == "" | $gasto == "" | $importe == "" | $fecha == ""){
             echo "<script language='javascript'>
-            alert('¡¡ Gasto añadido con exito !!');
-            window.location.replace('./gastos.php');
-            </script>"; 
-
-        }
-        else{
-            echo "<script language='javascript'>
-            alert('¡¡ Error al añadir gasto !!');
+            alert('¡¡ Faltan datos por rellenar !!');
             window.location.replace('./add_gastos.php');
-            </script>";
+            </script>"; 
         }
+        else {
+            $query = "insert into gastos (id, estado, nombre, work_id, tipo_gasto, importe, fecha, comentario, user_id) values (NULL, 'NO APROBADA', '$nombre' , (select id from works where name='$nombre'), '$gasto', '$importe', '$fecha', '$comentario', (select id from users where id=$id));";
+            $consulta = mysqli_query($conn, $query) or die("Fallo en la consulta");
+            
+
+            if ($consulta){
+
+                echo "<script language='javascript'>
+                alert('¡¡ Gasto añadido con exito !!');
+                window.location.replace('./gastos.php');
+                </script>"; 
+
+            }
+            else{
+                echo "<script language='javascript'>
+                alert('¡¡ Error al añadir gasto !!');
+                window.location.replace('./add_gastos.php');
+                </script>";
+            }
+        }
+    } 
+    else if (isset($_REQUEST['close'])) {
+        header('Location:./gastos.php');
     }
 }

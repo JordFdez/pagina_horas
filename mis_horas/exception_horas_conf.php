@@ -50,6 +50,7 @@ else {
             <hr><br>
 
             <input type="submit" class="boton" name="act" value="Actualizar">
+            <input type="submit" class="boton" name="close" value="Cerrar">
         </form>
     </div>
 

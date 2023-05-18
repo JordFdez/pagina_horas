@@ -20,27 +20,32 @@ else{
 if (!$conn) {
     die("Conexion fallida:" . mysqli_connect_error());
 } else {
-    if ($nombre == "" | $fecha == "" | $hora == "") {
-        echo "<script language='javascript'>
-        alert('¡¡ Faltan datos por rellenar !!');
-        window.location.replace('./add_horas_propias.php');
-        </script>";
-    } 
-    else {
-        
-            $query = "insert into hours (id, hour, user_id, work_id, status, date, register, comment) values (NULL, $hora, $user_id, (select id from works where name like '$nombre'), 'NO APROBADA', now(), $hora_extra, '$observacion' );";
-            $consulta = mysqli_query($conn, $query) or die("Fallo en la consulta");
-
-            if ($consulta) {
-                echo "<script language='javascript'>
-            alert('¡¡ Hora añadida con exito !!');
-            window.location.replace('./horas_propias.php');
-            </script>";
-            } else {
-                echo "<script language='javascript'>
-            alert('¡¡ Error al añadir horas !!');
+    if (isset($_REQUEST['add'])) {
+        if ($nombre == "" | $fecha == "" | $hora == "") {
+            echo "<script language='javascript'>
+            alert('¡¡ Faltan datos por rellenar !!');
             window.location.replace('./add_horas_propias.php');
             </script>";
-            }
+        } 
+        else {
+            
+                $query = "insert into hours (id, hour, user_id, work_id, status, date, register, comment) values (NULL, $hora, $user_id, (select id from works where name like '$nombre'), 'NO APROBADA', now(), $hora_extra, '$observacion' );";
+                $consulta = mysqli_query($conn, $query) or die("Fallo en la consulta");
+
+                if ($consulta) {
+                    echo "<script language='javascript'>
+                alert('¡¡ Hora añadida con exito !!');
+                window.location.replace('./horas_propias.php');
+                </script>";
+                } else {
+                    echo "<script language='javascript'>
+                alert('¡¡ Error al añadir horas !!');
+                window.location.replace('./add_horas_propias.php');
+                </script>";
+                }
+        }
+    } 
+    else if (isset($_REQUEST['close'])) {
+        header('Location:./horas_propias.php');
     }
 }

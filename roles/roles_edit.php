@@ -35,6 +35,7 @@ $id_rol = $_REQUEST['id_rol'];
             <br><hr><br>
 
             <input type="submit" name="save" class="boton" value="Guardar">
+            <input type="submit" class="boton" name="close" value="Cerrar">
         </form>
     </div>
     </div>

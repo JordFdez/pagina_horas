@@ -16,21 +16,26 @@ if (!$conn) {
 } 
 
 else {
-    $query = "update exception_hours set exception_work_id=(select id from exception_works where name like '%$name_obra%'), date='$fecha', hour='$horas' where id=$id_hours ;";
-    $consulta = mysqli_query($conn, $query) or die("Fallo en la consulta");
+    if (isset($_REQUEST['act'])) {
+        $query = "update exception_hours set exception_work_id=(select id from exception_works where name like '%$name_obra%'), date='$fecha', hour='$horas' where id=$id_hours ;";
+        $consulta = mysqli_query($conn, $query) or die("Fallo en la consulta");
 
-        if($consulta){
+            if($consulta){
+                echo "<script language='javascript'>
+                    alert('¡¡ Hora actualizada !!');
+                    window.location.replace('./resto_horas.php');
+                    </script>";
+            }
+
+        else{
             echo "<script language='javascript'>
-                alert('¡¡ Hora actualizada !!');
-                window.location.replace('./resto_horas.php');
-                </script>";
+                    alert('¡¡ Error !!');
+                    window.location.replace('./horas_todos.php');
+                    </script>";
         }
-
-    else{
-        echo "<script language='javascript'>
-                alert('¡¡ Error !!');
-                window.location.replace('./horas_todos.php');
-                </script>";
+    } 
+    else if (isset($_REQUEST['close'])) {
+        header('Location:./resto_horas.php');
     }
 }
 

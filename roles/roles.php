@@ -39,7 +39,7 @@ echo '</head>
 <!--include menu -->
 '; 
 include("../template/menu.php"); 
-echo ' <br><br><br><br>
+echo ' <br><br>
 
 <div class="tabla_estilo">
 <span>Roles</span><br><br>

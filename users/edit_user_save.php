@@ -17,6 +17,7 @@ if (!$conn) {
     die("Conexion fallida:" . mysqli_connect_error());
 } 
 else {
+    if (isset($_REQUEST['save'])) {
     $query = "update users set name='$nombre', last_name='$apellido', email='$email', password='$pass', type='$estado', schedule_id=(select id from schedules where name='$horario'), rol_id=(select id from roles where name='$rol') where users.id=$id ";
     $consulta = mysqli_query($conn, $query) or die("Fallo en la consulta");
     if ($consulta){
@@ -24,6 +25,10 @@ else {
                 alert('¡¡ Usuario actualizado !!');
                 window.location.replace('./usuario.php');
                 </script>";
+    }
+    } 
+    else if (isset($_REQUEST['close'])) {
+        header('Location:./usuario.php');
     }
 }
 

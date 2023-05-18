@@ -53,11 +53,14 @@ if (!$conn) {
         <!--include menu -->
         '; 
         include("../template/menu.php"); 
-        echo ' <br><br><br><div class="medio">
+        echo ' <br><br><div class="medio">
                 <nav class="medio_ajuste">
-                    <div class="items">
-                        <span class="item_span"><a class="item_a" href="./add_horarios.php"> Añadir Horario</a></span>
-                    </div>
+
+                    <a class="item_a" href="./add_horarios.php">
+                        <div class="items">
+                            <span class="item_span"> Añadir Horario </span>
+                        </div>
+                    </a>
 
                 </nav>
             </div><br>

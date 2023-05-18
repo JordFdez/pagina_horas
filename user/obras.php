@@ -43,12 +43,14 @@ echo '</head>
 <!--include menu -->
 '; 
 include("../template/menu_user.php"); 
-echo ' <br><br><br>
+echo ' <br><br>
 <div class="medio">
             <nav class="medio_ajuste">
-                <div class="items">
-                    <span class="item_span"><a class="item_a" href="./exception_works.php"> Ir a resto de obras</a></span>
-                </div>
+                <a class="item_a" href="./exception_works.php">
+                    <div class="items">
+                        <span class="item_span"> Ir a resto de obras</span>
+                    </div>
+                </a>
 
                 
             </nav>

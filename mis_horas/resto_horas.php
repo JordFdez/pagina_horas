@@ -45,18 +45,26 @@ echo '</head>
     <!--include menu -->
     '; 
     include("../template/menu.php"); 
-    echo ' <br><br><br>
+    echo ' <br><br>
     <div class="medio">
             <nav class="medio_ajuste">
-                <div class="items">
-                    <span class="item_span"><a class="item_a" href="./horas_propias.php"> Ir a mis horas</a></span>
-                </div>
-                <div class="items ">
-                    <span class="item_span"><a class="item_a" href="../exception_works/exception_works.php"> Ver Obras</a></span>
-                </div>
-                <div class="items ">
-                    <span class="item_span"><a class="item_a" href="./add_exception_horas.php"> Añadir Horas </a></span>
-                </div>
+                <a class="item_a" href="./horas_propias.php">
+                    <div class="items">
+                        <span class="item_span"> Ir a mis horas</span>
+                    </div>
+                </a>
+
+                <a class="item_a" href="../exception_works/exception_works.php">
+                    <div class="items ">
+                        <span class="item_span"> Ver Obras </span>
+                    </div>
+                </a>
+
+                <a class="item_a" href="./add_exception_horas.php">
+                    <div class="items ">
+                        <span class="item_span"> Añadir Horas </span>
+                    </div>
+                </a>
             </nav>
         </div><br>
 </div>

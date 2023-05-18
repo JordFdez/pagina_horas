@@ -56,11 +56,12 @@ else {
         }
         print '</datalist>    
             <br>
-            <input type="hidden" name="id_user" value="'. $resultado['id']  .'">
+            <input type="hidden" name="id_user" value="'. $resultado['id']  . '">
 
             <hr><br>
 
             <input type="submit" class="boton" name="save" value="Guardar">
+            <input type="submit" class="boton" name="close" value="Cerrar">
         </form>
     </div>
     </div>

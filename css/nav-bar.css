@@ -27,6 +27,7 @@
     border-radius: 6px;
     padding: 1%;
     margin-bottom: 1%;
+    cursor: pointer;
 }
 
 .item_a {
@@ -36,7 +37,7 @@
 }
 
 .items:hover{
-    background-color: rgb(40, 232, 40);
+    background-color: rgb(196, 125, 3);
 }
 
 .APROBADA {

@@ -48,15 +48,24 @@ else {
             echo ' <br><br>
             <div class="medio">
             <nav class="medio_ajuste">
-                <div class="items">
-                    <span class="item_span"><a class="item_a" href="./resto_horas.php"> Ir a resto horas</a></span>
-                </div>
-                <div class="items ">
-                    <span class="item_span"><a class="item_a" href="../works/obras.php"> <img src="../img/const1.svg" height="25px" width="30px"> Ver Obras</a></span>
-                </div>
-                <div class="items ">
-                    <span class="item_span"><a class="item_a" href="add_horas_propias.php"> Añadir Horas </a></span>
-                </div>
+
+                <a class="item_a" href="./resto_horas.php">
+                    <div class="items">
+                        <span class="item_span"> Ir a resto horas </span>
+                    </div>
+                </a>
+
+                <a class="item_a" href="../works/obras.php">
+                    <div class="items ">
+                        <span class="item_span"> <img src="../img/const1.svg" height="25px" width="30px"> Ver Obras </span>
+                    </div>
+                </a>
+
+                <a class="item_a" href="add_horas_propias.php">
+                    <div class="items ">
+                        <span class="item_span"> Añadir Horas </span>
+                    </div>
+                </a>
             </nav>
         </div><br><br>
 
