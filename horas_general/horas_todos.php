@@ -76,7 +76,7 @@ echo '</head>
                     <thead>
                         <tr>
                             
-                            <th>Fecha</th>
+                            <th id="fecha_input">Fecha</th>
                             <th>Estado</th>
                             <th>Nombre</th>
                             <th>Apellidos</th>
@@ -92,8 +92,8 @@ echo '</head>
                     </thead>
                     <tfoot>
                 <tr>
-                    <th>Filter..</th>
-                    <th>Filter..</th>
+                    <th id="fecha_input" class="date">Filter..</th>
+                    <th class="estado">Filter..</th>
                     <th>Filter..</th>
                     <th>Filter..</th>
                     <th>Filter..</th>
@@ -111,7 +111,7 @@ echo '</head>
                         for ($i = 0; $i < $num_filas; $i++) {
                             $resultado = mysqli_fetch_array($consulta);
                             if ($resultado['comment'] == ""){
-                print "<tr><td>" . $resultado['date'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td> " . $resultado['name_user'] . " </td><td>" . $resultado['last_name'] ."</td><td>".$resultado['email']."</td><td> " . $resultado['name'] . "</td><td>" . $resultado['code'] . "</td><td>" . $resultado['hour'] . "</td><td></td>
+                print "<tr><td id='fecha_input'>" . $resultado['date'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td> " . $resultado['name_user'] . " </td><td>" . $resultado['last_name'] ."</td><td>".$resultado['email']."</td><td> " . $resultado['name'] . "</td><td>" . $resultado['code'] . "</td><td>" . $resultado['hour'] . "</td><td></td>
                             <td>" . $resultado['who_approve'] . "</td><td>" . $resultado['register'] . "</td>
                             <td><form action='horas_conf.php' method='GET'>
                             <button class='no_boton2' name='delete' onclick='return confirmDelete()' title='Borrar' >
@@ -128,7 +128,7 @@ echo '</head>
                             }
 
                             else{
-                print "<tr><td>" . $resultado['date'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td> " . $resultado['name_user'] . " </td><td>" . $resultado['last_name'] . "</td><td>" . $resultado['email'] . "</td><td> " . $resultado['name'] . "</td><td>" . $resultado['code'] . "</td><td>" . $resultado['hour'] . "</td>
+                print "<tr><td id='fecha_input'>" . $resultado['date'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td> " . $resultado['name_user'] . " </td><td>" . $resultado['last_name'] . "</td><td>" . $resultado['email'] . "</td><td> " . $resultado['name'] . "</td><td>" . $resultado['code'] . "</td><td>" . $resultado['hour'] . "</td>
                 <td><form action='horas_comment.php' method='GET'><button class='no_boton2' title='Observaciones'>
                             <i class='fa fa-comment-o' style='font-size:22px;color:orange'></i>
                             </button><input type='hidden' name='hours_id' value='" . $resultado['id'] . "' ></form></td>

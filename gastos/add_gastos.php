@@ -32,13 +32,14 @@ if (!$conn) {
         print ' <option name="lista_obras" value="' . $resultado4['name'] . '">';
     }
     print
-        '</datalist> <br>
-            Tipo de gasto: <select name="tipo_gasto">
-                <option>DIETA</option>
-                <option>KM</option>
-                <option>VARIOS</option>
-            </select><br>
+    '</datalist> <br>
+            Tipo de gasto: <select name="tipo_gasto" id="opciones">
+                <option value="DIETA" >DIETA</option>
+                <option value="KM" >KM</option>
+                <option value="VARIOS" >VARIOS</option>
+            </select ><br>
             <br><input type="text" name="importe" placeholder="Importe" ><br><br>
+            <input type="text" id="campo-input" style="display: none;"><br>
             Fecha: <input type="date" name="fecha"><br>
 
             <br><textarea name="comentario" rows="10" cols="40" placeholder="Añada comentario sobre los gastos varios, km, dieta..."></textarea><br>

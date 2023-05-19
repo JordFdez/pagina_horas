@@ -11,6 +11,8 @@
 
     <link rel="stylesheet" href="../css/nav-bar.css">
     <link rel="stylesheet" href="../css/formularios.css">
+    <script type="text/javascript" src="../js/gastos.js">
+    </script>
 
 </head>
 

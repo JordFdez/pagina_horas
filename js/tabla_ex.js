@@ -25,8 +25,54 @@ $(document).ready(function () {
 
     $('#mydatatable tfoot th').each(function () {
         var title = $(this).text();
-        $(this).html('<input type="text" placeholder="Filtrar.." />');
+
+        //codigo columna fecha
+        if ($(this).hasClass('date')) {
+            $(this).html(
+                '<input id="date-from" type="text" placeholder="Desde.." />' +
+                '<input id="date-to" type="text" placeholder="Hasta.." />'
+            );
+            $.fn.dataTable.ext.search.push(
+                function (settings, data, dataIndex) {
+                    var dateFrom = $('#date-from').val();
+                    var dateTo = $('#date-to').val();
+                    var date = data[0];
+
+                    if ((dateFrom == '' && dateTo == '') ||
+                        (dateFrom == '' && Date.parse(date) <= Date.parse(dateTo)) ||
+                        (Date.parse(dateFrom) <= Date.parse(date) && dateTo == '') ||
+                        (Date.parse(dateFrom) <= Date.parse(date) && Date.parse(date) <= Date.parse(dateTo))) {
+                        return true;
+                    }
+                    return false;
+                }
+            );
+        }
+        // Código para columna estado
+        else if ($(this).hasClass('estado')) {
+      
+      $(this).html(
+        '<select><option value="">Todos</option><option value="APROBADA">APROBADA</option><option value="NO APROBADA">NO APROBADA</option></select>'
+      );
+
+      var selectElement = $(this).find('select');
+
+      selectElement.on('change', function () {
+        var selectedValue = $(this).val();
+
+        table.column($(this).parent().index() + ':visible').search('^'+selectedValue + '$', true, false).draw();
+      });
+        }
+
+        //codigo para resto columnas
+        else{
+            $(this).html('<input type="text" placeholder="Filtrar.." />');
+        }
+        
     });
+     
+
+        
 
     var table = $('#mydatatable').DataTable({
         "dom": 'B<"float-inherit"i><"float-right"f>t<"float-left"l><"float-right"p><"clearfix">',
@@ -45,11 +91,16 @@ $(document).ready(function () {
                 var that = this;
 
                 $('input', this.footer()).on('keyup change', function () {
-                    if (that.search() !== this.value) {
-                        that
-                            .search(this.value)
-                            .draw();
-                    }
+                    if ($(this).closest('th').hasClass('date')) {
+                                console.log('Filtering dates..');
+                                table.draw();
+                            }
+                    else {
+                        if (that.search() !== this.value) {
+                            that
+                                .search(this.value)
+                                .draw();
+                        }}
                 });
             })
         },
