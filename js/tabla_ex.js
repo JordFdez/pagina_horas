@@ -59,9 +59,13 @@ $(document).ready(function () {
 
       selectElement.on('change', function () {
         var selectedValue = $(this).val();
-
+        if (selectedValue === '') {
+          table.column($(this).parent().index() + ':visible').search('').draw();
+        }
+        else{
         table.column($(this).parent().index() + ':visible').search('^'+selectedValue + '$', true, false).draw();
-      });
+        }
+    });
         }
 
         //codigo para resto columnas

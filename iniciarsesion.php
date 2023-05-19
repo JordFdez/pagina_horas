@@ -32,7 +32,7 @@ if(isset($_REQUEST['iniciar'])){
                 $query1 = "update users set password2=MD5('$password') where id=$id;";
                 $consulta2 = mysqli_query($conn, $query1) or die ("Fallo en la consulta");
                 if ($consulta2){
-                    if ($resultado['rol_id'] == "1" || $resultado['rol_id'] == "2"){
+                    if ($resultado['rol_id'] == "1" || $resultado['rol_id'] == "2"|| $resultado['rol_id'] == "4"){
                         header('Location:./horas_general/horas_todos.php');
                     }
                     else{
