@@ -61,13 +61,14 @@ maximum-scale=1, user-scalable=0" name="viewport" />
             <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
                 <thead>
                     <tr>
+                        <th id="fecha_input">Fecha</th>
                         <th>Estado</th>
                         <th>Nombre</th>
                         <th>Apellidos</th>
                         <th>Email</th>
                         <th>Obra</th>
                         <th>Codigo Obra</th>
-                        <th id="fecha_input">Fecha</th>
+
                         <th>Tipo</th>
                         <th>Importe</th>
                         <th>Observaciones</th>
