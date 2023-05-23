@@ -35,10 +35,12 @@ if (!$conn) {
             Tipo de gasto: <select name="tipo_gasto" id="tipo_gasto">
                 <option value="DIETA">DIETA</option>
                 <option value="KM">KM</option>
+                <option value="LOCOMOCION">LOCOMOCION</option>
                 <option value="VARIOS">VARIOS</option>
             </select name="tipo_gasto"><br><br>
-            <input type="text" name="importe" placeholder="Importe"><br>
-            <input type="file" name="miinput" id="miinput" disabled >
+            <input type="text" name="importe" placeholder="Valor"><br>
+            <input type="file" name="miinput" class="miinput" id="miinput" disabled >
+            <input type="Hidden" class="tamaño" name="MAX_FILE_SIZE" value="1024000" >
             <br>Fecha: <input type="date" name="fecha"><br>
             <br><textarea name="comentario" rows="8" cols="40" placeholder="Añada comentario sobre los gastos varios, km, dieta..."></textarea><br>
 

@@ -10,6 +10,7 @@ if (!$conn) {
     die("Conexion fallida:" . mysqli_connect_error());
 } 
 else {
+    if(isset($_REQUEST['update'])){
     if ($observ == "") {
         echo "<script language='javascript'>
         alert('¡¡ Escriba alguna observación !!');
@@ -34,6 +35,10 @@ else {
             </script>";
         }
     }
+}
+else if (isset($_REQUEST['close'])){
+    header("Location:./horas_todos.php");
+}
 }
 
 ?>

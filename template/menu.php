@@ -11,7 +11,7 @@
   <a href="../gastos/gastos.php"><img src="../img/euro.png" height="30px" width="35px"> Gastos </a>
 
   <div class="dropdown">
-    <a><img src="../img/euro.png" height="30px" width="35px"> Importe</a>
+    <a><img src="../img/importes.svg" height="30px" width="35px"> Importe</a>
     <div class="dropdown-content">
       <a href="../importe/km.php">KM</a>
       <a href="../importe/dieta.php">DIETA</a>

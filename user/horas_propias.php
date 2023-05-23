@@ -9,7 +9,7 @@ if (!$conn) {
     die("Conexion fallida:" . mysqli_connect_error());
 } 
 else {
-    $query = "select hours.status, works.name, hours.date, hours.hour, hours.comment, hours.id, hours.register from hours, users, works where users.id=hours.user_id and hours.work_id=works.id and users.id=$user_id order by hours.id desc;";
+    $query = "select hours.status, works.name, hours.date, hours.hour, hours.comment, hours.who_approve, hours.id, hours.register from hours, users, works where users.id=hours.user_id and hours.work_id=works.id and users.id=$user_id order by hours.id desc;";
     $consulta = mysqli_query($conn, $query) or die("Fallo en la consulta");
     $num_filas = mysqli_num_rows($consulta);
 
@@ -81,12 +81,14 @@ else {
                                     <th>Estado</th>
                                     <th>Horas</th>
                                     <th>Obervaciones</th>
+                                    <th>Aprobado por</th>
                                     <th>Horas Extras</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tfoot>
                 <tr>
+                    <th>Filter..</th>
                     <th>Filter..</th>
                     <th>Filter..</th>
                     <th>Filter..</th>
@@ -101,7 +103,7 @@ else {
                                     $resultado = mysqli_fetch_array($consulta);
                                     if ($resultado['comment'] == "" && $resultado['status']=="NO APROBADA"){
                                     print "<tr><td>" . $resultado['date'] . "</td><td>" . $resultado['name'] . "</td><td class='".$resultado['status']."'>" . $resultado['status'] . " </td><td>" . $resultado['hour'] . "</td><td></td>
-                                    <td>" . $resultado['register'] . "</td>
+                                    <td>".$resultado['who_approve']."</td><td>" . $resultado['register'] . "</td>
                                     <td><form action='horas_propias_conf.php' method='GET' onsubmit='return confirmarEliminacion()'>
                                     <input type='hidden' name='id_hours' value='" . $resultado['id'] . "'>
                                     <button class='no_boton2' name='delete'  title='Borrar' >
@@ -115,14 +117,14 @@ else {
                                     }
                                     else if ($resultado['comment'] == "" && $resultado['status'] == "APROBADA"){
                                     print "<tr><td>" . $resultado['date'] . "</td><td>" . $resultado['name'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td>" . $resultado['hour'] . "</td><td></td>
-                                            <td>" . $resultado['register'] . "</td>
+                                             <td>" . $resultado['who_approve'] . "</td><td>" . $resultado['register'] . "</td>
                                             <td></td</tr>";
                                     }
                                     else if ($resultado['comment'] != "" && $resultado['status'] == " NO APROBADA") {
                                     print "<tr><td>" . $resultado['date'] . "</td><td>" . $resultado['name'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td>" . $resultado['hour'] . "</td><td><form action='horas_comment.php' method='GET'><button class='no_boton2'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-dots-fill' viewBox='0 0 16 16'>
                                     <path d='M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z'/>
                                     </svg></button><input type='hidden' name='hours_id' value='" . $resultado['id'] . "' ></form><input type='hidden' name='comm' value='" . $resultado['comment'] . "'></td>
-                                    <td>" . $resultado['register'] . "</td>
+                                     <td>" . $resultado['who_approve'] . "</td><td>" . $resultado['register'] . "</td>
                                     <td><form action='horas_propias_conf.php' method='GET' onsubmit='return confirmarEliminacion()'>
                                     <input type='hidden' name='id_hours' value='" . $resultado['id'] . "'>
                                     <button class='no_boton2' name='delete'  title='Borrar' >
@@ -138,7 +140,7 @@ else {
                                         print "<tr><td>" . $resultado['date'] . "</td><td>" . $resultado['name'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td>" . $resultado['hour'] . "</td><td><form action='horas_comment.php' method='GET'><button class='no_boton2'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-dots-fill' viewBox='0 0 16 16'>
                                                 <path d='M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z'/>
                                                 </svg></button><input type='hidden' name='hours_id' value='" . $resultado['id'] . "' ></form><input type='hidden' name='comm' value='" . $resultado['comment'] . "'></td>
-                                                <td>" . $resultado['register'] . "</td>
+                                                 <td>" . $resultado['who_approve'] . "</td><td>" . $resultado['register'] . "</td>
                                                 <td><form action='horas_propias_conf.php' method='GET' onsubmit='return confirmarEliminacion()'>
                                                 <input type='hidden' name='id_hours' value='" . $resultado['id'] . "'>
                                                 <button class='no_boton2' name='delete'  title='Borrar' >

@@ -26,6 +26,7 @@ include("../template/formularios.php");
     <br><hr><br>
 
     <input type="submit" name="update" class="boton" value="Actualizar">
+    <input type="submit" name="close" class="boton" value="Cerrar">
 </form>
 </div>
 </div>

@@ -8,7 +8,7 @@ if (!$conn) {
     die("Conexion fallida:" . mysqli_connect_error());
 } 
 else {
-    $query = "select hours.status, users.name as 'name_user', users.last_name, users.email, works.code, works.name, works.user_id as 'responsable', hours.date, hours.hour, hours.comment, hours.id, who_approve, hours.register from hours, users, works where users.id=hours.user_id and hours.work_id=works.id ;";
+    $query = "select hours.status, users.name as 'name_user', users.last_name, users.email, works.code, works.name, hours.date, hours.hour, hours.comment, hours.id, who_approve, hours.register from hours, users, works where users.id=hours.user_id and hours.work_id=works.id and works.user_id=$user_id;";
     $consulta = mysqli_query($conn, $query) or die("Fallo en la consulta");
     $num_filas = mysqli_num_rows($consulta);
 
@@ -66,7 +66,7 @@ echo '</head>
                         <span class="item_span"> Mis Obras </span>
                     </div>
                 </a>
-                <a class="item_a" href="./horas_mis_obras.php">
+                <a class="item_a" href="../horas_general/horas_mis_obras.php">
                     <div class="items ">
                         <span class="item_span"> Horas mis obras </span>
                     </div>
@@ -81,6 +81,7 @@ echo '</head>
         <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
                     <thead>
                         <tr>
+                            
                             <th id="fecha_input">Fecha</th>
                             <th>Estado</th>
                             <th>Nombre</th>
@@ -115,10 +116,29 @@ echo '</head>
                     <tbody>';
                         for ($i = 0; $i < $num_filas; $i++) {
                             $resultado = mysqli_fetch_array($consulta);
-                            if ($resultado['comment'] == "" && $resultado['responsable']== $user_id && $resultado['status']=="NO APROBADA"){
-                            print "<tr><td id='fecha_input'>" . $resultado['date'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td> " . $resultado['name_user'] . " </td><td>" . $resultado['last_name'] ."</td><td>".$resultado['email']."</td><td> " . $resultado['name'] . "</td><td>" . $resultado['code'] . "</td><td>" . $resultado['hour'] . "</td><td></td>
+                            if ($resultado['comment'] == "" && $resultado['status']== "NO APROBADA"){
+                print "<tr><td id='fecha_input'>" . $resultado['date'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td> " . $resultado['name_user'] . " </td><td>" . $resultado['last_name'] ."</td><td>".$resultado['email']."</td><td> " . $resultado['name'] . "</td><td>" . $resultado['code'] . "</td><td>" . $resultado['hour'] . "</td><td></td>
                             <td>" . $resultado['who_approve'] . "</td><td>" . $resultado['register'] . "</td>
-                            <td><form action='horas_conf.php' method='GET'>
+                            <td><form action='horas_mis_obras_conf.php' method='GET'>
+                            <button class='no_boton2' name='delete' onclick='return confirmDelete()' title='Borrar' >
+                            <i class='fa fa-trash-o' style='font-size:22px;color:red'></i>
+                            </button>
+                            <button name='edit' class='no_boton2' title='Editar'>
+                            <i class='fa fa-edit' style='font-size:22px;color:black'></i>
+                            </button>
+                            <button name='confirm' class='no_boton2'>
+                            <i class='fa fa-check-circle-o' style='font-size:22px;color:green' title='Aprobar'></i>
+                            </button>
+                            <input type='hidden' name='id' value='" . $resultado['id'] . "'> </form>
+                </td></tr>";
+                            }
+                            else if ($resultado['comment'] != "" && $resultado['status'] == "NO APROBADA"){
+                            print "<tr><td id='fecha_input'>" . $resultado['date'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td> " . $resultado['name_user'] . " </td><td>" . $resultado['last_name'] . "</td><td>" . $resultado['email'] . "</td><td> " . $resultado['name'] . "</td><td>" . $resultado['code'] . "</td><td>" . $resultado['hour'] . "</td>
+                            <td><form action='horas_comment.php' method='GET'><button class='no_boton2' title='Observaciones'>
+                            <i class='fa fa-comment-o' style='font-size:22px;color:orange'></i>
+                            </button><input type='hidden' name='hours_id' value='" . $resultado['id'] . "' ></form></td>
+                            <td>" . $resultado['who_approve'] . "</td><td>" . $resultado['register'] . "</td>
+                            <td><form action='horas_mis_obras_conf.php' method='GET'>
                             <button class='no_boton2' name='delete' onclick='return confirmDelete()' title='Borrar' >
                             <i class='fa fa-trash-o' style='font-size:22px;color:red'></i>
                             </button>
@@ -131,33 +151,21 @@ echo '</head>
                             <input type='hidden' name='id' value='" . $resultado['id'] . "'> </form>
                             </td></tr>";
                             }
-                            else if ($resultado['comment'] != "" && $resultado['responsable'] == $user_id && $resultado['status'] == "NO APROBADA"){
+                            
+                            else if ($resultado['comment'] != "" && $resultado['status'] == "APROBADA"){
                             print "<tr><td id='fecha_input'>" . $resultado['date'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td> " . $resultado['name_user'] . " </td><td>" . $resultado['last_name'] . "</td><td>" . $resultado['email'] . "</td><td> " . $resultado['name'] . "</td><td>" . $resultado['code'] . "</td><td>" . $resultado['hour'] . "</td>
                             <td><form action='horas_comment.php' method='GET'><button class='no_boton2' title='Observaciones'>
                             <i class='fa fa-comment-o' style='font-size:22px;color:orange'></i>
                             </button><input type='hidden' name='hours_id' value='" . $resultado['id'] . "' ></form></td>
                             <td>" . $resultado['who_approve'] . "</td><td>" . $resultado['register'] . "</td>
-                            <td><form action='horas_conf.php' method='GET'>
-                            <button class='no_boton2' name='delete' onclick='return confirmDelete()' title='Borrar' >
-                            <i class='fa fa-trash-o' style='font-size:22px;color:red'></i>
-                            </button>
-                            <button name='edit' class='no_boton2' title='Editar'>
-                            <i class='fa fa-edit' style='font-size:22px;color:black'></i>
-                            </button>
-                            <button name='confirm' class='no_boton2'>
-                            <i class='fa fa-check-circle-o' style='font-size:22px;color:green' title='Aprobar'></i>
-                            </button>
-                            <input type='hidden' name='id' value='" . $resultado['id'] . "'> </form>
-                            </td></tr>";
+                            <td></td></tr>";
                             }
-                            else if ($resultado['status'] == "APROBADA" && $resultado['comment']!=""){
+
+                            else if ($resultado['comment'] == "" && $resultado['status'] == "APROBADA"){
                             print "<tr><td id='fecha_input'>" . $resultado['date'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td> " . $resultado['name_user'] . " </td><td>" . $resultado['last_name'] . "</td><td>" . $resultado['email'] . "</td><td> " . $resultado['name'] . "</td><td>" . $resultado['code'] . "</td><td>" . $resultado['hour'] . "</td>
-                            <td><form action='horas_comment.php' method='GET'><button class='no_boton2' title='Observaciones'>
-                            <i class='fa fa-comment-o' style='font-size:22px;color:orange'></i>
-                            </button><input type='hidden' name='hours_id' value='" . $resultado['id'] . "' ></form></td>
+                            <td></td>
                             <td>" . $resultado['who_approve'] . "</td><td>" . $resultado['register'] . "</td>
-                            <td>
-                            </td></tr>";
+                            <td></td></tr>";
                             }
                             
                         }
@@ -184,5 +192,3 @@ echo '</head>
             </script>";
     }
 }
-
-?>

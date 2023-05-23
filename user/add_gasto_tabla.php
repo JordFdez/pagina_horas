@@ -9,7 +9,7 @@ $importe = $_REQUEST['importe'];
 $fecha = $_REQUEST['fecha'];
 $comentario = $_REQUEST['comentario'];
 $id = $_SESSION['id'];
-
+// $copiarFichero = false;
 
 if (!$conn) {
     die("Conexion fallida:" . mysqli_connect_error());
@@ -20,11 +20,30 @@ else {
             echo "<script language='javascript'>
             alert('¡¡ Faltan datos por rellenar !!');
             window.location.replace('./add_gastos.php');
-            </script>"; 
-        } else {
+            </script>";
+        }
+        //  else if (is_uploaded_file($_FILES['miinput']['tmp_name'])) {
+        //     $nombreDirectorio = "C:/laragon/www/horas/img_gastos/";
+        //     $nombreFichero = $_FILES['miinput']['name'];
+        //     $copiarFichero = true;
+
+        //     //si ya existe un fichero con el mismo nombre, renombrarlo
+        //     $nombreCompleto = $nombreDirectorio . $nombreFichero;
+        //     if (is_file($nombreCompleto)) {
+        //         $idUnico = time();
+        //         $nombreFichero = $idUnico . "-" . $nombreFichero;
+        //     }
+        // } else if ($_FILES['miinput']['error'] == UPLOAD_ERR_FORM_SIZE) {
+        //     $maxsize = $_REQUEST['MAX_FILE_SIZE'];
+        //     $nombreFichero = "";
+        // }
+
+        // if ($copiarFichero) {
+        //     move_uploaded_file($_FILES['miinput']['tmp_name'], $nombreDirectorio . $nombreFichero);
+        // }
             
 
-            if ($gasto == "DIETA") {
+           else if ($gasto == "DIETA") {
                 $query = "insert into gastos (id, estado, nombre, work_id, tipo_gasto, importe, fecha, comentario, user_id) values (NULL, 'NO APROBADA', '$nombre' , (select id from works where name='$nombre'), '$gasto', (select $importe*dieta_importe from importe_gasto where user_id=$id), '$fecha', '$comentario', (select id from users where id=$id));";
                 $consulta = mysqli_query($conn, $query) or die("Fallo en la consulta");
                 if ($consulta) {
@@ -69,8 +88,9 @@ else {
                 }
             }
     } 
-}
     else if (isset($_REQUEST['close'])) {
         header('Location:./gastos.php');
     }
 }
+
+?>
