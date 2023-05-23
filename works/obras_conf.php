@@ -66,6 +66,7 @@ else if (isset($_REQUEST['edit'])) {
             <hr><br>
 
             <input type="submit" class="boton" name="save" value="Guardar">
+            <input type="submit" class="boton" name="close" value="Cerrar">
         </form>
     </div>
     </div>

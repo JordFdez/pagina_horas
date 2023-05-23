@@ -93,7 +93,8 @@ echo ' <br><br>
                     <tbody>';
                     for ($i = 0; $i < $num_filas; $i++) {
                         $resultado = mysqli_fetch_array($consulta);
-                        print "<tr><td>" . trim($resultado['code']) . " </td><td> " . trim($resultado['name']) . "</td><td>" . $resultado['email'] . "</td><td>" . $resultado['created_at'] . "</td><td><form action='obras_conf.php' method='GET'>
+                        print "<tr><td>" . trim($resultado['code']) . " </td><td> " . trim($resultado['name']) . "</td><td>" . $resultado['email'] . "</td><td>" . $resultado['created_at'] . "</td>
+                        <td><form action='obras_conf.php' method='GET'>
                         <button class='no_boton2' name='delete' onclick='return confirmDelete()' title='Borrar' >
                             <i class='fa fa-trash-o' style='font-size:22px;color:red'></i>
                             </button>

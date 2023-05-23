@@ -22,7 +22,7 @@ else {
         
             if ($nombre == "VACACIONES" || $nombre == "FESTIVO"|| $nombre == "BAJA LABORAL"){
 
-                $query_todo = "insert into exception_hours (id, hour, user_id, exception_work_id, status, date) values (NULL, (select L from schedules where id=(select schedule_id from users where id=$user_id)), $user_id, (select id from exception_works where name like '$nombre'), 'NO APROBADA', now() );";
+                $query_todo = "insert into exception_hours (id, hour, user_id, exception_work_id, status, date) values (NULL, (select L from schedules where id=(select schedule_id from users where id=$user_id)), $user_id, (select id from exception_works where name like '$nombre'), 'NO APROBADA', '$fecha' );";
                 $consulta_todo = mysqli_query($conn, $query_todo) or die ("Fallo en la consulta");
 
                 if ($consulta_todo){
@@ -43,7 +43,7 @@ else {
             else{
                 $hora = $_REQUEST['hora'];
 
-                $query1 = "insert into exception_hours (id, hour, user_id, exception_work_id, status, date) values (NULL, $hora, $user_id, (select id from exception_works where name like '$nombre'), 'NO APROBADA', now() ); ";
+                $query1 = "insert into exception_hours (id, hour, user_id, exception_work_id, status, date) values (NULL, $hora, $user_id, (select id from exception_works where name like '$nombre'), 'NO APROBADA', '$fecha' ); ";
                 $consulta1 = mysqli_query($conn, $query1) or die ("Fallo en la consulta 2");
                 if ($consulta1) {
                     echo "<script language='javascript'>

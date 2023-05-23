@@ -68,13 +68,14 @@ content="width=device-width" />
         <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
                     <thead>
                         <tr>
+                            <th>Fecha Inicio</th>
                             <th>Estado</th>
                             <th>Nombre</th>
                             <th>Apellidos</th>
                             <th>Email</th>
                             <th>Obra</th>
                             <th>Codigo obra</th>
-                            <th>Fecha Inicio</th>
+                            
                             <th>Horas</th>
                             <th>Aprobado por:</th>
                             <th>Acciones</th>
@@ -82,8 +83,8 @@ content="width=device-width" />
                     </thead>
                     <tfoot>
                 <tr>
-                    <th>Filter..</th>
-                    <th>Filter..</th>
+                    <th id="fecha_input" class="date">Filter..</th>
+                    <th class="estado">Filter..</th>
                     <th>Filter..</th>
                     <th>Filter..</th>
                     <th>Filter..</th>
@@ -97,7 +98,7 @@ content="width=device-width" />
                     <tbody>';
         for ($i = 0; $i < $num_filas; $i++) {
             $resultado = mysqli_fetch_array($consulta);
-            print "<tr><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td> " . $resultado['name_user'] . "</td><td> " . $resultado['last_name'] . "</td><td> " . $resultado['email'] . "</td><td> " . $resultado['name'] . "</td><td>" . $resultado['code'] . "</td><td>" . $resultado['date'] . "</td><td>" . $resultado['hour'] . "</td><input type='hidden' name='hours_id' value='" . $resultado['id'] . "' ></td>
+            print "<tr><td>" . $resultado['date'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td> " . $resultado['name_user'] . "</td><td> " . $resultado['last_name'] . "</td><td> " . $resultado['email'] . "</td><td> " . $resultado['name'] . "</td><td>" . $resultado['code'] . "</td><td>" . $resultado['hour'] . "</td><input type='hidden' name='hours_id' value='" . $resultado['id'] . "' ></td>
                             <td>" . $resultado['who_approve'] . "</td>
                             <td><form action='exception_horas_conf.php' method='GET'>
                             <button class='no_boton2' name='delete' onclick='return confirmDelete()' >

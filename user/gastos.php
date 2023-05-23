@@ -98,13 +98,16 @@ maximum-scale=1, user-scalable=0" name="viewport" />
                     for ($i = 0; $i < $num_filas; $i++) {
                         $resultado = mysqli_fetch_array($consulta);
                         if ($resultado['estado'] == "NO APROBADA"){
-                        print "<tr><td>" . $resultado['fecha'] . "</td><td class='" . $resultado['estado'] . "'>" . $resultado['estado'] . " </td><td>" . $resultado['user_name'] . "</td><td> " . $resultado['last_name'] . "</td><td> " . $resultado['email'] . "</td><td>" . $resultado['work_name'] . "</td><td>" . $resultado['code'] . "</td><td>" . $resultado['tipo_gasto'] . "</td><td>" . $resultado['importe'] . "</td><td>" . $resultado['comentario'] . "</td><td>" . $resultado['who_approve'] . "</td><td><form action='gastos_conf.php' method='GET'><input name='id_gastos' type='hidden' value=" . $resultado['id'] . ">
-                        <button class='no_boton2' name='delete' onclick='return confirmDelete()' title='Borrar' >
+                        print "<tr><td>" . $resultado['fecha'] . "</td><td class='" . $resultado['estado'] . "'>" . $resultado['estado'] . " </td><td>" . $resultado['user_name'] . "</td><td> " . $resultado['last_name'] . "</td><td> " . $resultado['email'] . "</td><td>" . $resultado['work_name'] . "</td><td>" . $resultado['code'] . "</td><td>" . $resultado['tipo_gasto'] . "</td><td>" . $resultado['importe'] . "</td><td>" . $resultado['comentario'] . "</td><td>" . $resultado['who_approve'] . "</td>
+                            <td><form action='gastos_conf.php' method='GET'><input name='id_gastos' type='hidden' value=" . $resultado['id'] . ">
+                            <button class='no_boton2' name='delete' onclick='return confirmDelete()' title='Borrar' >
                             <i class='fa fa-trash-o' style='font-size:22px;color:red'></i>
-                            </button>
-                            <!-- <button name='edit' class='no_boton2' title='Editar'>
+                            </button></form>
+                            <form action='gastos_edit_conf.php' method='GET'>
+                            <input name='id_gastos' type='hidden' value=" . $resultado['id'] . ">
+                             <button name='edit' class='no_boton2' title='Editar'>
                             <i class='fa fa-edit' style='font-size:22px;color:black'></i>
-                            </button> -->
+                            </button>
                             </form></td></tr>";
                     }
                     else{

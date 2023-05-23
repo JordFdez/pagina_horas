@@ -36,7 +36,7 @@ else {
             <br><input type="text" name="hora" placeholder="Horas"><br>
             Hora extra <input type="checkbox" class="extra" name="extra"><br>
             Fecha: <input type="date" name="fecha" placeholder="Fecha"><br>
-            <textarea name="observacion" rows="14" cols="40" placeholder="Escribe tus observaciones..."></textarea><br><br> 
+            <textarea name="observacion" rows="8" cols="40" placeholder="Escribe tus observaciones..."></textarea><br><br> 
 
             <hr><br>
 

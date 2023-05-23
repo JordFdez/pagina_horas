@@ -34,6 +34,7 @@ content="width=device-width" />
     include("../include/tabla.php");
     include("../include/tabla2.php");
     include("../include/menu.php");
+    include("../include/eliminar.php");
 
 echo '</head>
 
@@ -76,9 +77,9 @@ echo '</head>
         <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
                     <thead>
                         <tr>
+                            <th id="fecha_input">Fecha</th>
                             <th>Estado</th>
                             <th>Obra</th>
-                            <th>Fecha</th>
                             <th>Horas</th>
                             <th>Aprobado por:</th>
                             <th>Acciones</th>
@@ -86,8 +87,8 @@ echo '</head>
                     </thead>
                     <tfoot>
                 <tr>
-                    <th>Filter..</th>
-                    <th>Filter..</th>
+                    <th id="fecha_input" class="date">Filter..</th>
+                    <th class="estado">Filter..</th>
                     <th>Filter..</th>
                     <th>Filter..</th>
                     <th>Filter..</th>
@@ -98,15 +99,22 @@ echo '</head>
                     <tbody>';
                         for ($i = 0; $i < $num_filas; $i++) {
                             $resultado = mysqli_fetch_array($consulta);
-                            print "<tr><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td> " . $resultado['nombre_obra'] . "</td><td> " . $resultado['date'] . "</td><td>" . $resultado['hour'] . "</td><td>" . $resultado['who_approve'] . "</td><input type='hidden' name='hours_id' value='" . $resultado['id'] . "' ></td>
+                            if ($resultado['status'] == "NO APROBADA"){
+                            print "<tr><td> " . $resultado['date'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td> " . $resultado['nombre_obra'] . "</td><td>" . $resultado['hour'] . "</td><td>" . $resultado['who_approve'] . "</td><input type='hidden' name='hours_id' value='" . $resultado['id'] . "' ></td>
                             <td>
-                            <form action='exception_horas_conf.php' method='GET'>
-                            <button class='no_boton2' name='delete' onclick='return confirmDelete()' title='Borrar' >
+                            <form action='exception_horas_conf.php' method='GET' onsubmit='return confirmarEliminacion()'>
+                            <input type='hidden' name='id' value='".$resultado['id']."'>
+                            <button class='no_boton2' name='delete' title='Borrar' >
                             <i class='fa fa-trash-o' style='font-size:22px;color:red'></i>
                             </button>
                              
-                            <input type='hidden' name='id' value='".$resultado['id']."'> </form>
+                             </form>
                 </td></tr>";
+                            }
+                            else if ($resultado['status'] == "APROBADA"){
+                                print "<tr><td> " . $resultado['date'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td> " . $resultado['nombre_obra'] . "</td><td>" . $resultado['hour'] . "</td><td>" . $resultado['who_approve'] . "</td><input type='hidden' name='hours_id' value='" . $resultado['id'] . "' ></td>
+                                <td></td></tr>";
+                            }
                         }
                         echo '
                     </tbody>
@@ -127,7 +135,7 @@ echo '</head>
     } else {
         echo "<script language='javascript'>
             alert('¡¡ Error al añadir las horas!!');
-            window.location.replace('./horas.php');
+            window.location.replace('./resto_horas.php');
             </script>";
     }
 }

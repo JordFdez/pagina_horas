@@ -105,9 +105,13 @@ else {
                                     <td><form action='horas_propias_conf.php' method='GET' onsubmit='return confirmarEliminacion()'>
                                     <input type='hidden' name='id_hours' value='" . $resultado['id'] . "'>
                                     <button class='no_boton2' name='delete'  title='Borrar' >
-                            <i class='fa fa-trash-o' style='font-size:22px;color:red'></i>
-                            </button>
-                            </form></td</tr>";
+                                    <i class='fa fa-trash-o' style='font-size:22px;color:red'></i>
+                                    </button></form>
+                                    <form action='horas_propias_edit.php' method='GET'>
+                                    <input type='hidden' name='id_hours_edit' value='" . $resultado['id'] . "'>
+                                    <button name='edit' class='no_boton2' title='Editar'>
+                                    <i class='fa fa-edit' style='font-size:22px;color:black'></i>
+                                    </button></form></td</tr>";
                                     }
                                     else if ($resultado['comment'] == "" && $resultado['status'] == "APROBADA"){
                                     print "<tr><td>" . $resultado['date'] . "</td><td>" . $resultado['name'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td>" . $resultado['hour'] . "</td><td></td>
@@ -122,9 +126,13 @@ else {
                                     <td><form action='horas_propias_conf.php' method='GET' onsubmit='return confirmarEliminacion()'>
                                     <input type='hidden' name='id_hours' value='" . $resultado['id'] . "'>
                                     <button class='no_boton2' name='delete'  title='Borrar' >
-                            <i class='fa fa-trash-o' style='font-size:22px;color:red'></i>
-                            </button>
-                            </form></td</tr>";
+                                    <i class='fa fa-trash-o' style='font-size:22px;color:red'></i>
+                                    </button>
+                                    </form><form action='horas_propias_edit.php' method='GET'>
+                                    <input type='hidden' name='id_hours_edit' value='" . $resultado['id'] . "'>
+                                    <button name='edit' class='no_boton2' title='Editar'>
+                                    <i class='fa fa-edit' style='font-size:22px;color:black'></i>
+                                    </button></form></td</tr>";
 
                                     } else if ($resultado['comment'] != "" && $resultado['status'] == "APROBADA") {
                                         print "<tr><td>" . $resultado['date'] . "</td><td>" . $resultado['name'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td>" . $resultado['hour'] . "</td><td><form action='horas_comment.php' method='GET'><button class='no_boton2'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-dots-fill' viewBox='0 0 16 16'>
@@ -138,7 +146,23 @@ else {
                                         </button>
                                         </form></td</tr>";
                                     
-                                }}
+                                } 
+                                else {
+                                    print "<tr><td>" . $resultado['date'] . "</td><td>" . $resultado['name'] . "</td><td class='" . $resultado['status'] . "'>" . $resultado['status'] . " </td><td>" . $resultado['hour'] . "</td><td>".$resultado['comment']."</td>
+                                    <td>" . $resultado['register'] . "</td>
+                                    <td><form action='horas_propias_conf.php' method='GET' onsubmit='return confirmarEliminacion()'>
+                                                <input type='hidden' name='id_hours' value='" . $resultado['id'] . "'>
+                                                <button class='no_boton2' name='delete'  title='Borrar' >
+                                        <i class='fa fa-trash-o' style='font-size:22px;color:red'></i>
+                                        </button>
+                                        </form>
+                                        <form action='horas_propias_edit.php' method='GET'>
+                                    <input type='hidden' name='id_hours_edit' value='" . $resultado['id'] . "'>
+                                    <button name='edit' class='no_boton2' title='Editar'>
+                                    <i class='fa fa-edit' style='font-size:22px;color:black'></i>
+                                    </button></form></td</tr>";
+                                        
+                            }}
                                 echo '
                             </tbody>
                         </table><br>

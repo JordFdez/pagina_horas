@@ -29,7 +29,7 @@ if (!$conn) {
         } 
         else {
             
-                $query = "insert into hours (id, hour, user_id, work_id, status, date, register, comment) values (NULL, $hora, $user_id, (select id from works where name like '$nombre'), 'NO APROBADA', now(), $hora_extra, '$observacion' );";
+                $query = "insert into hours (id, hour, user_id, work_id, status, date, register, comment) values (NULL, $hora, $user_id, (select id from works where name like '$nombre'), 'NO APROBADA', '$fecha', $hora_extra, '$observacion' );";
                 $consulta = mysqli_query($conn, $query) or die("Fallo en la consulta");
 
                 if ($consulta) {

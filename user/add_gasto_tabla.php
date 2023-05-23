@@ -22,6 +22,7 @@ else {
             window.location.replace('./add_gastos.php');
             </script>"; 
         } else {
+            
 
             if ($gasto == "DIETA") {
                 $query = "insert into gastos (id, estado, nombre, work_id, tipo_gasto, importe, fecha, comentario, user_id) values (NULL, 'NO APROBADA', '$nombre' , (select id from works where name='$nombre'), '$gasto', (select $importe*dieta_importe from importe_gasto where user_id=$id), '$fecha', '$comentario', (select id from users where id=$id));";
@@ -52,8 +53,8 @@ else {
                 window.location.replace('./add_gastos.php');
                 </script>";
                 }
-            } else if ($gasto == "KM") {
-                $query2 = "insert into gastos (id, estado, nombre, work_id, tipo_gasto, importe, fecha, comentario, user_id) values (NULL, 'NO APROBADA', '$nombre' , (select id from works where name='$nombre'), '$gasto', (select $importe*km_importe from importe_gasto where user_id=$id), '$fecha', '$comentario', (select id from users where id=$id));";
+            } else if ($gasto == "VARIOS") {
+                $query2 = "insert into gastos (id, estado, nombre, work_id, tipo_gasto, importe, fecha, comentario, user_id) values (NULL, 'NO APROBADA', '$nombre' , (select id from works where name='$nombre'), '$gasto', $importe, '$fecha', '$comentario', (select id from users where id=$id));";
                 $consulta2 = mysqli_query($conn, $query2) or die("Fallo en la consulta");
                 if ($consulta2) {
                     echo "<script language='javascript'>
